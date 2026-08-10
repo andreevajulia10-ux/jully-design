@@ -1,0 +1,210 @@
+.page {
+  --surface: #f3c8f3;
+  --accent: #e22897;
+  --pageInk: var(--accent);
+  --card: #fff;
+  --cardSoft: rgba(255,255,255,.42);
+  --ink: #292929;
+  --muted: rgba(226,40,151,.55);
+  --line: rgba(255,255,255,.52);
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--surface);
+  color: var(--pageInk);
+  transition: background .4s ease, color .4s ease;
+}
+
+.dark {
+  --surface: #151015;
+  --accent: #ff4cb3;
+  --pageInk: #fff;
+  --card: #262026;
+  --cardSoft: rgba(255,255,255,.08);
+  --ink: #fff;
+  --muted: rgba(255,76,179,.58);
+  --line: rgba(255,255,255,.16);
+}
+
+.shell { width: min(calc(100% - 128px), 1920px); margin-inline: auto; }
+.header { padding-top: 12px; }
+.announcement { min-height: 25px; display: grid; place-items: center; padding: 5px 16px; background: var(--accent); color: #fff; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; }
+.nav { min-height: 88px; display: flex; align-items: center; justify-content: space-between; gap: 32px; padding: 14px 64px; }
+.brand { font-family: var(--display); font-size: 24px; letter-spacing: -.02em; }
+.headerActions { display: flex; align-items: center; gap: 12px; }
+.modeButton { border: 1px solid currentColor; border-radius: 999px; background: transparent; font-size: 11px; line-height: 1; letter-spacing: .05em; text-transform: uppercase; transition: background .25s ease, color .25s ease; }
+.modeButton { min-height: 42px; padding: 0 18px; cursor: pointer; }
+.modeButton:hover { background: var(--accent); color: #fff; }
+
+.hero { min-height: 680px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 58px 0 96px; text-align: center; }
+.breadcrumb { margin: 0 0 22px; font-size: 10px; letter-spacing: .12em; opacity: .55; }
+.hero h1 { margin: 0; font-family: var(--display); font-size: clamp(150px, 17vw, 340px); font-weight: 700; line-height: .76; letter-spacing: -.035em; text-transform: uppercase; }
+.heroMeta { margin: 12px 0 14px; color: var(--pageInk); font-size: clamp(22px, 1.8vw, 36px); }
+.tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.tags span { padding: 5px 12px; border: 1px solid currentColor; border-radius: 999px; font-size: 10px; line-height: 1; letter-spacing: .08em; opacity: .58; }
+.detailsButton { margin-top: 32px; }
+
+.previews { position: relative; z-index: 2; padding: 64px 0 130px; }
+.previewGrid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+.previewWrap { min-width: 0; outline: none; }
+.previewWrap.active { position: relative; z-index: 4; }
+.previewWrap.dimmed .previewCard { opacity: .28; pointer-events: none; }
+.previewWrap:focus-within .previewCard { outline: 2px solid var(--accent); outline-offset: 0; }
+.previewCard {
+  --preview-offset-x: 0px;
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  box-shadow: 0 20px 50px rgba(102,25,74,.07);
+  transform-origin: center;
+  will-change: transform;
+  transition:
+    transform .65s cubic-bezier(.22,1,.36,1),
+    border-color .5s cubic-bezier(.22,1,.36,1),
+    box-shadow .65s cubic-bezier(.22,1,.36,1),
+    opacity .55s cubic-bezier(.22,1,.36,1);
+}
+.previewWrap.active .previewCard {
+  z-index: 5;
+  box-shadow: 0 40px 120px rgba(42,5,28,.42);
+  transform: translateX(var(--preview-offset-x)) translateY(-80px) scale(2.4);
+}
+.previewLabel { display: flex; justify-content: space-between; gap: 14px; padding-top: 12px; font-size: 11px; line-height: 1.2; text-transform: uppercase; }
+.previewLabel span:last-child { max-width: 70%; text-align: right; opacity: .62; }
+.previewWrap.active .previewLabel span:first-child { color: var(--pageInk); }
+.previewWrap.active .previewLabel span:last-child { opacity: 1; }
+.previewBackdrop { position: fixed; z-index: 1; inset: 0; background: rgba(37,8,27,.44); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .35s ease, visibility .35s ease; }
+.previewBackdrop.visible { opacity: 1; visibility: visible; }
+.previewControls,
+.swipeHint { display: none; }
+
+.previewMedia {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+}
+.previewCover,
+.previewVideo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: transparent; }
+.previewCover { z-index: 1; opacity: 1; transition: opacity .45s cubic-bezier(.22,1,.36,1); }
+.previewVideo { z-index: 2; opacity: 0; pointer-events: none; transition: opacity .45s cubic-bezier(.22,1,.36,1); }
+.previewVideo.playing { opacity: 1; }
+.previewWrap.active .previewCover { opacity: 0; }
+.playbackIndicator {
+  position: absolute;
+  z-index: 4;
+  right: 8px;
+  bottom: 8px;
+  width: 18px;
+  height: 18px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(226,40,151,.35);
+  border-radius: 50%;
+  background: rgba(255,255,255,.86);
+  font-size: 7px;
+  line-height: 1;
+  opacity: 0;
+  transform: scale(.82);
+  transition: opacity .2s ease, transform .2s ease;
+  pointer-events: none;
+}
+.previewWrap.active .playbackIndicator { opacity: .78; transform: scale(1); }
+.playbackIndicator.paused { opacity: 1; }
+.previewMedia:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+
+.projectNote { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; padding: 0 0 120px; }
+.projectNote > div { min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; padding: 22px; border-radius: 8px; background: var(--cardSoft); }
+.projectNote span { font-size: 10px; letter-spacing: .1em; }
+.projectNote p { margin: 0; color: var(--ink); font-size: 20px; line-height: 1.2; }
+.modalProjectNote { padding-bottom: 36px; }
+.footer { min-height: 300px; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 64px; border-radius: 22px 22px 0 0; background: var(--card); }
+.footer > a:first-child { font-size: 16px; text-transform: uppercase; }
+
+.modal { position: fixed; z-index: 20; inset: 0; overflow: hidden; background: var(--surface); }
+.modalClose { position: fixed; z-index: 22; top: 24px; right: 24px; width: 52px; height: 52px; border: 1px solid var(--accent); border-radius: 50%; background: var(--card); color: var(--accent); font-size: 30px; cursor: pointer; }
+.modalCard { width: 100%; height: 100dvh; overflow-y: auto; padding: 96px max(64px, calc((100vw - 1792px) / 2)); border-radius: 0; background: var(--surface); box-shadow: none; }
+.modalLabel { margin: 0 0 12px; font-size: 10px; letter-spacing: .12em; opacity: .6; }
+.modalCard > h2 { margin: 0; font-family: var(--display); font-size: clamp(84px, 8vw, 150px); line-height: .82; }
+.modalLead { max-width: 900px; margin: 34px 0 70px; color: var(--ink); font-size: clamp(24px, 2vw, 34px); line-height: 1.15; }
+.modalSection { padding: 36px 0; border-top: 1px solid var(--line); }
+.modalSection h3 { margin: 0 0 18px; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.modalSection > p, .modalSection li { color: var(--ink); font-size: 17px; line-height: 1.5; }
+.modalSection > p { max-width: 920px; }
+.taskGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+.taskGrid article { min-height: 190px; display: flex; flex-direction: column; justify-content: space-between; padding: 20px; border-radius: 8px; background: var(--cardSoft); }
+.taskGrid span { font-family: var(--display); font-size: 48px; }
+.taskGrid p { margin: 20px 0 0; color: var(--ink); font-size: 15px; line-height: 1.35; }
+.modalSection ul { margin: 0; padding: 0; list-style: none; }
+.modalSection li { padding: 12px 0; border-bottom: 1px solid var(--line); }
+.modalSection li::before { content: "↗"; margin-right: 14px; color: var(--accent); }
+
+@media (max-width: 1100px) {
+  .shell { width: calc(100% - 32px); }
+  .nav { padding-inline: 16px; }
+  .hero { min-height: 580px; }
+  .previewGrid { grid-template-columns: repeat(2, 1fr); gap: 36px 12px; }
+  .previewWrap.active .previewCard { transform: translateY(-20px) scale(1.18); }
+  .previewBackdrop { display: none; }
+}
+
+@media (max-width: 720px) {
+  .modeButton { display: none; }
+  .brand { font-size: 20px; }
+  .nav { min-height: 76px; }
+  .hero { min-height: 440px; padding: 44px 0 58px; }
+  .hero h1 { font-size: clamp(104px, 37vw, 180px); }
+  .heroMeta { max-width: 280px; font-size: 19px; }
+  .previews { width: 100%; padding: 42px 0 82px; text-align: center; }
+  .previewGrid {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+    padding-inline: 16px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-padding-inline: 16px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    touch-action: pan-x;
+  }
+  .previewGrid::-webkit-scrollbar { display: none; }
+  .previewWrap { flex: 0 0 calc(100vw - 32px); scroll-snap-align: center; scroll-snap-stop: always; }
+  .previewWrap.active .previewCard { transform: none; }
+  .previewCard { box-shadow: 0 24px 58px rgba(102,25,74,.14); }
+  .previewLabel { min-height: 42px; justify-content: center; gap: 10px; padding: 12px 12px 0; text-align: center; }
+  .previewLabel span:last-child { max-width: none; text-align: center; opacity: 1; }
+  .previewControls { width: calc(100% - 32px); display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 12px; margin: 22px auto 0; }
+  .previewControls button { width: 48px; height: 48px; display: grid; place-items: center; padding: 0; border: 1px solid currentColor; border-radius: 50%; background: var(--card); color: var(--accent); font-size: 20px; cursor: pointer; }
+  .previewControls button:disabled { opacity: .28; }
+  .previewControls span { font-size: 11px; letter-spacing: .12em; }
+  .previewControls strong { font-weight: 600; }
+  .swipeHint { display: block; margin: 10px 0 0; font-size: 10px; letter-spacing: .1em; text-transform: uppercase; opacity: .58; }
+  .projectNote { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; padding-bottom: 64px; }
+  .projectNote > div { min-height: 150px; padding: 14px; text-align: center; }
+  .projectNote > div:last-child { grid-column: 1 / -1; min-height: 120px; }
+  .projectNote p { font-size: 15px; }
+  .footer { min-height: 240px; flex-direction: column; align-items: center; justify-content: center; padding: 36px 16px; text-align: center; }
+  .modalCard { padding: 72px 16px 36px; text-align: center; }
+  .modalCard > h2 { font-size: 72px; }
+  .modalLead { margin-bottom: 46px; }
+  .modalSection > p { margin-inline: auto; font-size: 15px; }
+  .taskGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .taskGrid article { min-height: 180px; padding: 14px; text-align: left; }
+  .taskGrid article:last-child { grid-column: 1 / -1; min-height: 150px; }
+  .modalSection li { text-align: left; font-size: 15px; }
+  .modalClose { top: 18px; right: 18px; width: 44px; height: 44px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .previewCard, .previewBackdrop { transition: none; }
+  .previewWrap.active .previewCard { transform: none; }
+}
