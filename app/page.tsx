@@ -10,6 +10,29 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HERO_CANVAS_SIZE = 2000;
 
+const profileJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  name: "Портфолио UX/UI-дизайнера Юлии Черношей",
+  url: "https://jully-design.ru/",
+  dateModified: "2026-08-12",
+  mainEntity: {
+    "@type": "Person",
+    "@id": "https://jully-design.ru/#julia-chernoshey",
+    name: "Юлия Черношей",
+    alternateName: "@Jully_Ch",
+    url: "https://jully-design.ru/",
+    image: "https://jully-design.ru/assets/hero-yulia-new.webp",
+    jobTitle: "UX/UI-дизайнер",
+    description:
+      "UX/UI-дизайнер, создающий интерфейсы цифровых продуктов, адаптивные сайты и их фронтенд-реализацию.",
+    sameAs: [
+      "https://www.behance.net/5e2d01f1",
+      "https://t.me/Jully_Ch",
+    ],
+  },
+};
+
 function HeroCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -795,7 +818,12 @@ export default function Home() {
   };
 
   return (
-    <main className={dark ? "portfolio is-dark" : "portfolio"} id="top">
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(profileJsonLd) }}
+      />
+      <main className={dark ? "portfolio is-dark" : "portfolio"} id="top">
       <section className="hero" aria-labelledby="hero-title">
         <HeroCanvas />
         <header className="site-header">
@@ -1057,6 +1085,7 @@ export default function Home() {
           <strong>{dark ? "Светлая" : "Тёмная"} ↗</strong>
         </button>
       </div>
-    </main>
+      </main>
+    </>
   );
 }
