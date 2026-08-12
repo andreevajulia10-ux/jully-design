@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "@fontsource/bebas-neue/400.css";
 import "@fontsource-variable/geist";
 import "@fontsource-variable/geist/wght-italic.css";
@@ -74,7 +75,39 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ru">
-      <body>{children}</body>
+      <body>
+  {children}
+
+  <Script
+    id="yandex-metrika"
+    strategy="afterInteractive"
+    dangerouslySetInnerHTML={{
+      __html: `
+        (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j=0; j<document.scripts.length; j++) {
+            if (document.scripts[j].src === r) { return; }
+          }
+          k=e.createElement(t);
+          a=e.getElementsByTagName(t)[0];
+          k.async=1;
+          k.src=r;
+          a.parentNode.insertBefore(k,a);
+        })(window, document, "script",
+          "https://mc.yandex.ru/metrika/tag.js?id=111542132", "ym");
+
+        ym(111542132, "init", {
+          ssr: true,
+          webvisor: true,
+          clickmap: true,
+          accurateTrackBounce: true,
+          trackLinks: true
+        });
+      `,
+    }}
+  />
+</body>
     </html>
   );
 }
