@@ -827,7 +827,7 @@ export default function Home() {
       <section className="hero" aria-labelledby="hero-title">
         <HeroCanvas />
         <header className="site-header">
-          <div className="announcement">UX/UI designer · open to product teams · 2026</div>
+         <div className="announcement">UX/UI-дизайнер · создаю сайты · Сургут</div>
           <nav className="nav" aria-label="Основная навигация">
             <a className="brand" href="#top">@Jully_Ch™</a>
             <div className="nav-actions">
