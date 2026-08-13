@@ -4,6 +4,10 @@ export const metadata: Metadata = {
   title: "UX/UI дизайн образовательной платформы Linka | Кейс",
   description:
     "Кейс UX/UI-дизайна Linka: образовательная платформа для логопедов, дефектологов и педагогов коррекционного профиля.",
+  robots: {
+  index: false,
+  follow: true,
+},
   alternates: {
     canonical: "/linka/",
   },
