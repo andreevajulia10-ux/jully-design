@@ -837,15 +837,15 @@ export default function Home() {
           </nav>
         </header>
 
-        <h1 className="hero-title" id="hero-title" aria-label="UX/UI DESIGNER · VIBE CODER">
-          <span className="sr-only">UX/UI DESIGNER · VIBE CODER</span>
+        <h1 className="hero-title" id="hero-title" aria-label="Веб-дизайнер и UX/UI-дизайнер в Сургуте">
+  <span className="sr-only">Веб-дизайнер и UX/UI-дизайнер в Сургуте</span>
           <img className="hero-title-uxui" src="/assets/hero-title-uxui.png" alt="" aria-hidden="true" fetchPriority="high" />
           <img className="hero-title-vibe" src="/assets/hero-title-vibe.png" alt="" aria-hidden="true" fetchPriority="high" />
         </h1>
 
         <div className="hero-grid shell">
           <article className="intro-card">
-            <p>Привет! Я Юля — UX/UI-дизайнер. Создаю интерфейсы для сложных продуктов, внутренних систем и мобильных сервисов, где важны логика, скорость и понятный пользовательский путь.</p>
+            <p>Привет! Я Юля. Проектирую интерфейсы и создаю сайты — от идеи и дизайна до адаптивной разработки и запуска.</p>
             <img className="intro-scribble" src="/assets/intro-scribble.svg" alt="" aria-hidden="true" />
             <PortfolioButton href="#about">Немного обо мне</PortfolioButton>
           </article>
