@@ -947,6 +947,40 @@ export default function Home() {
             />
           </div>
         </a>
+        <a
+          className="project-card project-card-fourth project-card-external"
+          href="https://morrow-objects.netlify.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Открыть сайт проекта MORROW OBJECTS в новой вкладке"
+        >
+          <div className="project-copy">
+            <div><h2>MORROW OBJECTS</h2><div className="tag-row"><Tag>E-commerce</Tag><Tag>UX/UI</Tag><Tag>Frontend</Tag></div></div>
+            <div>
+              <p>Концепт интернет-магазина дизайнерского освещения: атмосферная главная, каталог и карточки товаров с выбором вариантов.</p>
+              <span className="pill-button project-card-cta" aria-hidden="true">
+                <span className="pill-label">Открыть сайт</span>
+                <span className="pill-icon">
+                  <img className="pill-arrow pill-arrow-default" src="/assets/button-arrow.png" alt="" />
+                  <img className="pill-arrow pill-arrow-hover" src="/assets/button-arrow-hover.png" alt="" />
+                </span>
+              </span>
+            </div>
+          </div>
+          <div className="project-media project-media-morrow">
+            <video
+              className="project-cover-image project-cover-morrow"
+              src="/assets/project-morrow-objects-cover.mp4"
+              poster="/assets/project-morrow-objects-cover.webp"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              aria-hidden="true"
+            />
+          </div>
+        </a>
       </section>
 
       <a className="archive-marquee" href="/archives" aria-label="Перейти в архив работ">

@@ -101,6 +101,7 @@ img { display: block; max-width: 100%; }
 .project-card-first { top: 32px; z-index: 1; }
 .project-card-second { top: 56px; z-index: 2; }
 .project-card-third { top: 80px; z-index: 3; }
+.project-card-fourth { top: 104px; z-index: 4; }
 .project-card-external { cursor: pointer; }
 .project-card-external:focus-visible { outline: 3px solid var(--accent); outline-offset: 6px; }
 .project-copy { display: flex; flex-direction: column; justify-content: space-between; padding: 48px 32px 32px; color: var(--card-ink); }
@@ -113,9 +114,11 @@ img { display: block; max-width: 100%; }
 .project-media-wms { padding: 0; background: #ebe5df; }
 .project-media-linka { padding: 0; background: #f4ede4; }
 .project-media-open { padding: 0; background: #f4f0ed; }
+.project-media-morrow { padding: 0; background: #2b160c; }
 .project-cover-image { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 .project-cover-linka { object-position: center; }
 .project-cover-open { object-position: 50% 43%; }
+.project-cover-morrow { object-position: center; }
 .project-card-external:hover .project-card-cta { background: #e22897; color: #fff; }
 .project-card-external:hover .project-card-cta .pill-arrow-default { opacity: 0; }
 .project-card-external:hover .project-card-cta .pill-arrow-hover { opacity: 1; }
@@ -358,6 +361,7 @@ img { display: block; max-width: 100%; }
   .project-card-first { top: 24px; }
   .project-card-second { top: 44px; }
   .project-card-third { top: 64px; }
+  .project-card-fourth { top: 84px; }
   .testimonials-inner { width: calc(100% - 32px); padding-inline: 0; }
   .testimonial-detail-top { gap: 40px; }
   .testimonial-detail-bottom { gap: 24px; }
@@ -405,6 +409,7 @@ img { display: block; max-width: 100%; }
   .project-card-first { top: 12px; }
   .project-card-second { top: 24px; }
   .project-card-third { top: 36px; }
+  .project-card-fourth { top: 48px; }
   .project-copy { grid-column: 1; grid-row: 1; min-width: 0; padding: 14px 10px 10px; }
   .project-copy h2 { overflow-wrap: anywhere; }
   .project-copy p { margin-bottom: 14px; overflow-wrap: anywhere; font-size: clamp(10px, 2.9vw, 12px); line-height: 1.25; }
