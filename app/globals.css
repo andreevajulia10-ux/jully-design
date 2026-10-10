@@ -60,7 +60,7 @@ img { display: block; max-width: 100%; }
 .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; padding: 0 32px; }
 .intro-card, .portrait-card { min-height: min(1163px, 61vw); border-radius: 16px; overflow: hidden; }
 .intro-card { position: relative; display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; padding: 32px; background: var(--card); color: var(--card-ink); transition: background-color .45s ease, color .45s ease; }
-.intro-card > p { position: relative; z-index: 2; max-width: 839px; margin: 0; color: var(--card-ink); font-size: clamp(38px, 2.55vw, 52px); line-height: 1.23; letter-spacing: -.02em; }
+.intro-card > p { position: relative; z-index: 2; max-width: 839px; margin: 0; color: var(--card-ink); font-size: clamp(24px, 2.12vw, 32px); line-height: 1.23; letter-spacing: -.02em; }
 .intro-card > .pill-button { position: relative; z-index: 3; }
 .intro-scribble { position: absolute; z-index: 1; top: 40.3%; left: 20.8%; width: 74.8%; height: auto; pointer-events: none; }
 .portrait-card { position: relative; margin: 0; background: var(--pink); }
