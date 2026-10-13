@@ -999,12 +999,12 @@ export default function Home() {
           href="https://www.4x4zone.pl/"
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Открыть сайт проекта 4X4ZONE в новой вкладке"
+          aria-label="Открыть сайт проекта INSA TURBO в новой вкладке"
         >
           <div className="project-copy">
-            <div><h2>4X4ZONE</h2><div className="tag-row"><Tag>Website</Tag><Tag>UX/UI</Tag></div></div>
+            <div><h2>INSA TURBO</h2><div className="tag-row"><Tag>Website</Tag><Tag>UX/UI</Tag></div></div>
             <div>
-              <p>Сайт 4X4ZONE для любителей внедорожников и путешествий вне асфальта.</p>
+              <p>Интернет-магазин шин для внедорожников. Индивидуальный дизайн, удобный каталог, фильтрация по характеристикам и подробные карточки товаров — всё для быстрого и комфортного выбора шин.</p>
               <span className="pill-button project-card-cta" aria-hidden="true">
                 <span className="pill-label">Открыть сайт</span>
                 <span className="pill-icon">
