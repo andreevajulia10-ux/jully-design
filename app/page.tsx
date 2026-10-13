@@ -343,6 +343,13 @@ function seededRandom(seed: number) {
   return random;
 }
 
+function preventHangingPrepositions(text: string) {
+  return text.replace(
+    /(^|[\s([{«])([А-Яа-яЁё]{1,2}) /g,
+    (_, before, word) => `${before}${word}\u00A0`
+  );
+}
+
 function FlyingText({ as, children, className = "", id, variant }: FlyingTextProps) {
   const elementRef = useRef<HTMLElement>(null);
 
@@ -355,7 +362,11 @@ function FlyingText({ as, children, className = "", id, variant }: FlyingTextPro
     if (!element || reducedMotion) return;
 
     const config = flyingTextConfigs[variant];
-    const rawText = children.replace(/\s+/g, " ").trim();
+    const rawText =
+  variant === "about-copy" && !className.includes("testimonials-copy")
+    ? preventHangingPrepositions(children.replace(/\s+/g, " ").trim())
+    : children.replace(/\s+/g, " ").trim();
+
     const seed = 42 + rawText.length + (variant === "heading" ? 100 : 200);
     let timeline: gsap.core.Timeline | null = null;
     let scrollTrigger: ScrollTrigger | null = null;
