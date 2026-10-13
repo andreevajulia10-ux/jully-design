@@ -994,6 +994,36 @@ export default function Home() {
             />
           </div>
         </a>
+        <a
+          className="project-card project-card-fifth project-card-external"
+          href="https://www.4x4zone.pl/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Открыть сайт проекта 4X4ZONE в новой вкладке"
+        >
+          <div className="project-copy">
+            <div><h2>4X4ZONE</h2><div className="tag-row"><Tag>Website</Tag><Tag>UX/UI</Tag></div></div>
+            <div>
+              <p>Сайт 4X4ZONE для любителей внедорожников и путешествий вне асфальта.</p>
+              <span className="pill-button project-card-cta" aria-hidden="true">
+                <span className="pill-label">Открыть сайт</span>
+                <span className="pill-icon">
+                  <img className="pill-arrow pill-arrow-default" src="/assets/button-arrow.png" alt="" />
+                  <img className="pill-arrow pill-arrow-hover" src="/assets/button-arrow-hover.png" alt="" />
+                </span>
+              </span>
+            </div>
+          </div>
+          <div className="project-media project-media-4x4zone">
+            <img
+              className="project-cover-image project-cover-4x4zone"
+              src="/assets/project-4x4zone-cover.webp"
+              alt="Внедорожник на горной дороге над фьордом на закате"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
+        </a>
       </section>
 
       <a className="archive-marquee" href="/archives" aria-label="Перейти в архив работ">
